@@ -1,7 +1,7 @@
 /**
  * 
  */
-package resumeBuilder.storage;
+package resumeBuilder.storage.sections;
 
 /**
  * A Job to go in the jobs section of a resume.

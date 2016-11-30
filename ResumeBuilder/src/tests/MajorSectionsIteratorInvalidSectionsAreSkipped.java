@@ -1,14 +1,18 @@
-package resumeBuilder.fileSystem;
+package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import resumeBuilder.storage.MajorSection;
-import resumeBuilder.storage.Reference;
-import resumeBuilder.storage.Skill;
+import resumeBuilder.fileSystem.MajorSectionsIterator;
+import resumeBuilder.storage.sections.MajorSection;
+import resumeBuilder.storage.sections.Reference;
+import resumeBuilder.storage.sections.Skill;
 
 public class MajorSectionsIteratorInvalidSectionsAreSkipped {
 

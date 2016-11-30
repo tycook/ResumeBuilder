@@ -1,4 +1,4 @@
-package resumeBuilder.storage;
+package resumeBuilder.storage.sections;
 
 public abstract class MajorSection {
 private boolean shouldBeExported = true;

@@ -5,6 +5,11 @@ package resumeBuilder.storage;
 
 import java.util.ArrayList;
 
+import resumeBuilder.storage.sections.Job;
+import resumeBuilder.storage.sections.PersonalInfo;
+import resumeBuilder.storage.sections.Reference;
+import resumeBuilder.storage.sections.Skill;
+
 /**
  * @author derek_2
  *Represents the general storage container for a Resume.

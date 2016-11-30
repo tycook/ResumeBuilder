@@ -1,4 +1,4 @@
-package resumeBuilder.storage;
+package resumeBuilder.storage.sections;
 
 public class PersonalInfo extends MajorSection {
 }

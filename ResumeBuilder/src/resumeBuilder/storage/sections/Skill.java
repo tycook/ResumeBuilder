@@ -1,7 +1,7 @@
 /**
  * 
  */
-package resumeBuilder.storage;
+package resumeBuilder.storage.sections;
 
 /**
  * @author derek_2

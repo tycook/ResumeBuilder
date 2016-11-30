@@ -6,7 +6,7 @@ package resumeBuilder.fileSystem;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import resumeBuilder.storage.MajorSection;
+import resumeBuilder.storage.sections.MajorSection;
 
 /**
  * @author derek_2
