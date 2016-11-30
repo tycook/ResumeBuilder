@@ -11,17 +11,21 @@ import java.util.ArrayList;
  */
 public class Resume {
 	private final String resumeName;
-	private ArrayList<PersonalInfo> personalInfo;
-	private ArrayList<Job> jobs;
+	private final ArrayList<PersonalInfo> personalInfo;
+	private final ArrayList<Job> jobs;
+	private final ArrayList<Skill> skills;
+	private final ArrayList<Reference> references;
 	//...
 	/**
 	 * @param resumeName: The resume title. Is user facing, and used for the display when restoring a saved resume.
 	 */
-	public Resume(String resumeName) {
+public Resume(String resumeName) {
 		super();
 		this.resumeName = resumeName;
 		this.personalInfo = new ArrayList<PersonalInfo>();
 		this.jobs = new ArrayList<Job>();
+		this.skills = new ArrayList<Skill>();
+		this.references = new ArrayList<Reference>();
 	}
 
 	/**
@@ -35,12 +39,14 @@ public class Resume {
 	public void addJob(Job job) {
 		jobs.add(job);
 	}
+	
+
 
 	/**
-	 * @return the resumeName
+	 * @param skill the skill to add.
 	 */
-	public String getResumeName() {
-		return resumeName;
+	public void addSkill(Skill skill) {
+		skills.add(skill);
 	}
 
 	/**

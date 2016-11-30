@@ -40,7 +40,7 @@ public class WriteTo {
 	   email.setAlignment(ParagraphAlignment.CENTER);
 	   
 	   XWPFParagraph phone = document.createParagraph();
-	   XWPFRun phonerun = createRun(phone, 12, false, "720-555-5555");	   
+	   XWPFRun phonerun = createRun(phone, 12, false, "720-555-5555");
 	   phone.setAlignment(ParagraphAlignment.CENTER);
 	   
 	   

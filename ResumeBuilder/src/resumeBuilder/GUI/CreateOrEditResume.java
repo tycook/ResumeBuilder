@@ -17,6 +17,7 @@ public class CreateOrEditResume extends javax.swing.JFrame {
      * Creates new form CreateOrEditResume
      */
     public CreateOrEditResume() {
+    	
         initComponents();
     }
 
@@ -556,7 +557,6 @@ public class CreateOrEditResume extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         //TODO save the resume
-        
         JOptionPane.showMessageDialog(this,"Resume saved");
         // Go back to main screen
         HomeScreen m = new HomeScreen();

@@ -7,7 +7,7 @@ package resumeBuilder.storage;
  * A Job to go in the jobs section of a resume.
  *
  */
-public class Job {
+public class Job extends MajorSection {
 	private final String name;
 	private final String startDate;
 	private final String endDate;
