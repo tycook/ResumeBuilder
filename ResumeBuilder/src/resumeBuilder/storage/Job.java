@@ -18,7 +18,7 @@ public class Job {
 	 * @param endDate The end date of the job
 	 * @param description the description of the work done.
 	 */
-	public Job(String name, String startDate, string endDate, String description) {
+	public Job(String name, String startDate, String endDate, String description) {
 		super();
 		this.name = name;
 		this.startDate = startDate;
@@ -40,7 +40,7 @@ public class Job {
 	/**
 	 * @return the endDate
 	 */
-	public string getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 	/**

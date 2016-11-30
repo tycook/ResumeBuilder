@@ -29,7 +29,7 @@ public class Resume {
 	 * @return Void
 	 */
 	public void addPersonalInfo(PersonalInfo item) {
-		return personalInfo.add(item);
+		personalInfo.add(item);
 	}
 
 	public void addJob(Job job) {

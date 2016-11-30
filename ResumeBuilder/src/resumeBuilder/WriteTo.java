@@ -1,4 +1,4 @@
-package resumeBuilder.GUI;
+package resumeBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
