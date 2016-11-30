@@ -1,4 +1,4 @@
-package tests;
+package resumeBuilder.fileSystem;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import resumeBuilder.fileSystem.MajorSectionsIterator;
 import resumeBuilder.storage.sections.MajorSection;
 import resumeBuilder.storage.sections.Reference;
 import resumeBuilder.storage.sections.Skill;
