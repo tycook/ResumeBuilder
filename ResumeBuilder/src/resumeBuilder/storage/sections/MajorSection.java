@@ -1,5 +1,7 @@
 package resumeBuilder.storage.sections;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+
 public abstract class MajorSection {
 private boolean shouldBeExported = true;
 
@@ -16,4 +18,6 @@ public void setShouldBeExported(boolean shouldBeExported) {
 public boolean exportMe() {
 	return shouldBeExported;
 }
+public abstract void addSectionToWordDocument(XWPFDocument document);
+
 }

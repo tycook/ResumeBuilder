@@ -3,6 +3,8 @@
  */
 package resumeBuilder.storage.sections;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+
 /**
  * @author derek_2
  *
@@ -31,4 +33,12 @@ public class Reference extends MajorSection {
 		return contactInfo;
 	}
 	private final String contactInfo;
+	/* (non-Javadoc)
+	 * @see resumeBuilder.storage.sections.MajorSection#addSectionToWordDocument(org.apache.poi.xwpf.usermodel.XWPFDocument)
+	 */
+	@Override
+	public void addSectionToWordDocument(XWPFDocument document) {
+		// TODO Auto-generated method stub
+		
+	}
 }
