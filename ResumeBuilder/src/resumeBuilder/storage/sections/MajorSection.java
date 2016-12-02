@@ -20,4 +20,6 @@ public boolean exportMe() {
 }
 public abstract void addSectionToWordDocument(XWPFDocument document);
 
+	
+
 }
