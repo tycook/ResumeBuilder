@@ -8,7 +8,6 @@ public class Main {
 		HomeScreen mainGUI = new HomeScreen();
 		mainGUI.run();
 
-
 	}
 
 }

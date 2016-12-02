@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package resumeBuilder.fileSystem;
 
 import java.util.Iterator;
@@ -19,3 +20,10 @@ public class WordDocumentExporter implements Saver {
 	}
 
 }
+=======
+package resumebuilder;
+
+public class resumebuilder {
+	
+}
+>>>>>>> c2862ba9dd2643838b65fcc0c7e476ee8027dbcc

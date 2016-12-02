@@ -1,4 +1,4 @@
-package resumebuilder;
+package resumeBuilder;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -93,6 +93,8 @@ public class WriteTo {
 	   XWPFRun bullet5 = createBullet(reference1, "      l ");
 	   XWPFRun ref1run = createRun(reference1, 12, false, "John Snow 999-999-9999");
 	   
+	   
+	   //If
 	   
 	   document.write(out);
 	   out.close();
