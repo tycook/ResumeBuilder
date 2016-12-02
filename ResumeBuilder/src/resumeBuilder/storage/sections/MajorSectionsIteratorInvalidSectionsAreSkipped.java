@@ -55,7 +55,7 @@ public class MajorSectionsIteratorInvalidSectionsAreSkipped {
 		s.add(s1);
 		Skill s2 = new Skill("I'm a good worker", "It's true");
 		s.add(s2);
-		Reference r1 = new Reference("Donald Trump", "333-333-3333");
+		MajorSection r1 = new Reference("Donald Trump", "333-333-3333");
 		r1.setShouldBeExported(false);
 		s.add(r1);
 		i = new MajorSectionsIterator(s);

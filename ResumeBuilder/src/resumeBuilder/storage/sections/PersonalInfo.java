@@ -17,7 +17,6 @@ public class PersonalInfo extends MajorSection {
 	 */
 	@Override
 	public void addSectionToWordDocument(XWPFDocument document) {
-		// TODO Auto-generated method stub
 		XWPFParagraph paragraph = document.createParagraph();
 		XWPFRun run = paragraph.createRun();
 		run.setFontFamily("Times New Roman");

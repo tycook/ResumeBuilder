@@ -3,13 +3,10 @@
  */
 package resumeBuilder.storage.sections;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.math.BigInteger;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+	import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 
 /**
@@ -58,23 +55,7 @@ public class Job extends MajorSection {
 	public String getDescription() {
 		return description;
 	}
-	/* (non-Javadoc)
-	 * @see resumeBuilder.storage.sections.MajorSection#addSectionToWordDocument(org.apache.poi.xwpf.usermodel.XWPFDocument)
-	 */
-	@Override
-	
-	public static XWPFRun createBullet(XWPFParagraph paragraph){
-		XWPFRun run = paragraph.createRun();
-		run.setFontFamily("Wingdings");
-		run.setBold(true);
-		run.setFontSize(8);
-		run.setText("      l ");
-		paragraph.setSpacingBefore(0);
-		paragraph.setSpacingAfter(0);
-		return run;
-			}
 	public void addSectionToWordDocument(XWPFDocument document) {
-		// TODO Auto-generated method stub
 		XWPFParagraph paragraph = document.createParagraph();
 		createBullet(paragraph);
 		XWPFRun run = paragraph.createRun();
@@ -84,7 +65,7 @@ public class Job extends MajorSection {
 		paragraph.setSpacingBefore(0);
 		paragraph.setSpacingAfter(0);
 		paragraph.setAlignment(ParagraphAlignment.LEFT);
-			
+
 		XWPFParagraph paragraph2 = document.createParagraph();
 		createBullet(paragraph2);
 		XWPFRun run2 = paragraph2.createRun();

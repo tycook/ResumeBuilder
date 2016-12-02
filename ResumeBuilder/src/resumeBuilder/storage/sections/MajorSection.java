@@ -1,8 +1,20 @@
 package resumeBuilder.storage.sections;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 public abstract class MajorSection {
+public XWPFRun createBullet(XWPFParagraph paragraph) {
+	XWPFRun run = paragraph.createRun();
+	run.setFontFamily("Wingdings");
+	run.setBold(true);
+	run.setFontSize(8);
+	run.setText("      l ");
+	paragraph.setSpacingBefore(0);
+	paragraph.setSpacingAfter(0);
+	return run;
+		}
 private boolean shouldBeExported = true;
 
 /**
