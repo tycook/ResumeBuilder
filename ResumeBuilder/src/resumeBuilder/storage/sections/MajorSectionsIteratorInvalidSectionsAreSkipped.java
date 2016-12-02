@@ -1,4 +1,4 @@
-package resumeBuilder.fileSystem;
+package resumeBuilder.storage.sections;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -9,15 +9,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import resumeBuilder.storage.sections.MajorSection;
-import resumeBuilder.storage.sections.Reference;
-import resumeBuilder.storage.sections.Skill;
-
 public class MajorSectionsIteratorInvalidSectionsAreSkipped {
 
 	@Test
 	public void testHasNext() {
-	ArrayList<MajorSection> s = new ArrayList<MajorSection>();
+		ArrayList<MajorSection> s = new ArrayList<MajorSection>();
 		MajorSectionsIterator i = new MajorSectionsIterator(s);
 		assertFalse("The iterator claims there are items to yield in an empty list.", i.hasNext());
 		s.add(new Skill("test", "test"));

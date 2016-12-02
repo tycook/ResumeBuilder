@@ -1,18 +1,16 @@
 /**
  * 
  */
-package resumeBuilder.fileSystem;
+package resumeBuilder.storage.sections;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import resumeBuilder.storage.sections.MajorSection;
 
 /**
  * @author derek_2
  *
  */
-class MajorSectionsIterator implements Iterator<MajorSection> {
+public class MajorSectionsIterator implements Iterator<MajorSection> {
 	private ArrayList<MajorSection> sections;
 	private MajorSection nextItem;
 	private Iterator<MajorSection> sectionsIterator;
