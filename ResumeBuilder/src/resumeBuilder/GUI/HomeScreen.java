@@ -5,6 +5,8 @@
  */
 package resumeBuilder.GUI;
 
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author tycook1
@@ -41,8 +43,18 @@ public class HomeScreen extends javax.swing.JFrame {
         });
 
         editAnExistingResumeButton.setText("Edit an existing resume");
+        editAnExistingResumeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAnExistingResumeButtonActionPerformed(evt);
+            }
+        });
 
         modifyPersonalInfoButton.setText("Modify personal info");
+        modifyPersonalInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyPersonalInfoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,15 +84,25 @@ public class HomeScreen extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void createAResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        CreateOrEditResume c = new CreateOrEditResume();
+        ResumeWizard c = new ResumeWizard();
         c.setVisible(true);
         dispose();
     }                                                   
 
+    private void editAnExistingResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+        ExistingResumePicker editExistingResumePicker = new ExistingResumePicker();
+        editExistingResumePicker.setVisible(true);
+    }                                                          
+
+    private void modifyPersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
+        ModifyPersonalInfoScreen modifyPersonalInfoScreen = new ModifyPersonalInfoScreen();
+        modifyPersonalInfoScreen.setVisible(true);
+    }                                                        
+
     /**
      * @param args the command line arguments
      */
-    public  void run() {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

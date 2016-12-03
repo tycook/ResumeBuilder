@@ -11,13 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author tycook1
  */
-public class CreateOrEditResume extends javax.swing.JFrame {
+public class ResumeWizard extends javax.swing.JFrame {
 
     /**
      * Creates new form CreateOrEditResume
      */
-    public CreateOrEditResume() {
-    	
+    public ResumeWizard() {
         initComponents();
     }
 
@@ -75,6 +74,8 @@ public class CreateOrEditResume extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         resumeTitleLabel.setText("Resume Title:");
+
+        resumeTitleTextField.setToolTipText("");
 
         nameCheckBox.setSelected(true);
         nameCheckBox.setText("Name");
@@ -218,6 +219,7 @@ public class CreateOrEditResume extends javax.swing.JFrame {
             }
         });
 
+        referencesCheckBox.setSelected(true);
         referencesCheckBox.setText("References");
         referencesCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -557,6 +559,7 @@ public class CreateOrEditResume extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         //TODO save the resume
+        
         JOptionPane.showMessageDialog(this,"Resume saved");
         // Go back to main screen
         HomeScreen m = new HomeScreen();
@@ -566,9 +569,8 @@ public class CreateOrEditResume extends javax.swing.JFrame {
     }                                          
 
     private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        JOptionPane.showMessageDialog(this,"Resume exported");  
-        HomeScreen m = new HomeScreen();
-        m.setVisible(true);
+        ExportSaveAs exportSaveAs = new ExportSaveAs();
+        exportSaveAs.setVisible(true);
         dispose();
     }                                            
 
@@ -608,15 +610,15 @@ public class CreateOrEditResume extends javax.swing.JFrame {
     private void referencesCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {                                                
         if(referencesCheckBox.isSelected())
         {
-            referenceNameTextField.setVisible(true);
-            contactInfoTextField.setVisible(true);
-            addAnotherReferenceButton.setVisible(true);
+            referenceNameTextField.setEnabled(true);
+            contactInfoTextField.setEnabled(true);
+            addAnotherReferenceButton.setEnabled(true);
         }
         else
         {
-            referenceNameTextField.setVisible(false);
-            contactInfoTextField.setVisible(false);
-            addAnotherReferenceButton.setVisible(false);
+            referenceNameTextField.setEnabled(false);
+            contactInfoTextField.setEnabled(false);
+            addAnotherReferenceButton.setEnabled(false);
         }
     }                                               
 
@@ -643,20 +645,21 @@ public class CreateOrEditResume extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateOrEditResume.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResumeWizard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateOrEditResume.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResumeWizard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateOrEditResume.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResumeWizard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateOrEditResume.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ResumeWizard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateOrEditResume().setVisible(true);
+                new ResumeWizard().setVisible(true);
             }
         });
     }
