@@ -22,67 +22,12 @@ public class PersonalInfo extends MajorSection implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -6030072760275239677L;
+	transient private static final PersonalInfo instance=null;
 	private String name;
 	private HashMap<String, String> other;
-	transient private static final PersonalInfo instance=null;
+
 	private static File getSavePath(){
 		return new File(System.getProperty("user.home")+File.separator+".resumeBuilder"+File.separator+"personalInfo.ser");
-	}
-
-	/* (non-Javadoc)
-	 * @see resumeBuilder.storage.sections.MajorSection#addSectionToWordDocument(org.apache.poi.xwpf.usermodel.XWPFDocument)
-	 */
-	@Override
-	public void addSectionToWordDocument(XWPFDocument document) {
-		//Todo: remove blanks.
-		// TODO Auto-generated method stub
-		XWPFParagraph paragraph = document.createParagraph();
-		XWPFRun run = paragraph.createRun();
-		run.setFontFamily("Times New Roman");
-		run.setFontSize(12);
-		//need to change "test" to correct text from GUI
-		run.setText("test");
-		paragraph.setSpacingBefore(0);
-		paragraph.setSpacingAfter(0);
-		paragraph.setAlignment(ParagraphAlignment.CENTER);
-	}
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-	private PersonalInfo() {
-		super();
-		this.name="Default Name";
-		this.other = new HashMap<String, String>();
-		this.other.put("Email", "");
-		this.other.put("phone Number", "");
-		this.save();
-	}
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * @return the other attributes
-	 */
-	public HashMap<String, String> getOther() {
-		return other;
-	}
-	public void save(){
-		File perFile = getSavePath();
-		try {
-			FileOutputStream out = new FileOutputStream(perFile);
-			ObjectOutputStream o = new ObjectOutputStream(out);
-			o.writeObject(this);
-			o.close();
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	public static PersonalInfo load(){
 		if(PersonalInfo.instance!=null)
@@ -118,4 +63,82 @@ public class PersonalInfo extends MajorSection implements Serializable{
 		return null;
 
 	}
+	private PersonalInfo() {
+		super();
+		this.name="Default Name";
+		this.other = new HashMap<String, String>();
+		this.other.put("Email", "");
+		this.other.put("phone Number", "");
+		this.other.put("Address", "");
+		this.save();
+	}
+	/* (non-Javadoc)
+	 * @see resumeBuilder.storage.sections.MajorSection#addSectionToWordDocument(org.apache.poi.xwpf.usermodel.XWPFDocument)
+	 */
+	@Override
+	public void addSectionToWordDocument(XWPFDocument document) {
+		//Todo: remove blanks.
+		// TODO Auto-generated method stub
+		XWPFParagraph paragraph = document.createParagraph();
+		XWPFRun run = paragraph.createRun();
+		run.setFontFamily("Times New Roman");
+		run.setFontSize(12);
+		//need to change "test" to correct text from GUI
+		run.setText("test");
+		paragraph.setSpacingBefore(0);
+		paragraph.setSpacingAfter(0);
+		paragraph.setAlignment(ParagraphAlignment.CENTER);
+	}
+	public String getAddress(){
+		return this.other.get("Address");
+	}
+	public String getEmail(){
+		return this.other.get("Email");
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @return the other attributes
+	 */
+	public HashMap<String, String> getOther() {
+		return other;
+	}
+	public String getPhoneNumber(){
+		return this.other.get("Phone Number");
+	}
+
+	public void save(){
+		File perFile = getSavePath();
+		try {
+			FileOutputStream out = new FileOutputStream(perFile);
+			ObjectOutputStream o = new ObjectOutputStream(out);
+			o.writeObject(this);
+			o.close();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void setAddress(String addr){
+		this.other.put("Address", addr);
+	}
+	public void setEmail(String emailAddr){
+		this.other.put("Email", emailAddr);
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPhoneNumber(String phoneNumber){
+		this.other.put("Phone Number", phoneNumber);
+	}
+
 }
