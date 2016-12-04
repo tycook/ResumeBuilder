@@ -40,6 +40,7 @@ public Resume(String resumeName) {
 		super();
 		this.resumeName = resumeName;
 		this.personalInfo = PersonalInfo.load();
+		System.out.println(this.personalInfo);
 		this.jobs = new ArrayList<Job>();
 		this.skills = new ArrayList<Skill>();
 		this.references = new ArrayList<Reference>();

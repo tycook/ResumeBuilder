@@ -24,7 +24,7 @@ public class PersonalInfo extends MajorSection implements Serializable{
 	private static final long serialVersionUID = -6030072760275239677L;
 	private String name;
 	private HashMap<String, String> other;
-	transient private static final PersonalInfo instance = PersonalInfo.load();
+	transient private static final PersonalInfo instance=null;
 	private static File getSavePath(){
 		return new File(System.getProperty("user.home")+File.separator+".resumeBuilder"+File.separator+"personalInfo.ser");
 	}
@@ -44,7 +44,7 @@ public class PersonalInfo extends MajorSection implements Serializable{
 		run.setText("test");
 		paragraph.setSpacingBefore(0);
 		paragraph.setSpacingAfter(0);
-		edu.setAlignment(ParagraphAlignment.CENTER);
+		paragraph.setAlignment(ParagraphAlignment.CENTER);
 	}
 	/**
 	 * @return the name
@@ -54,8 +54,11 @@ public class PersonalInfo extends MajorSection implements Serializable{
 	}
 	private PersonalInfo() {
 		super();
+		this.name="Default Name";
+		this.other = new HashMap<String, String>();
 		this.other.put("Email", "");
 		this.other.put("phone Number", "");
+		this.save();
 	}
 	/**
 	 * @param name the name to set
@@ -97,11 +100,14 @@ public class PersonalInfo extends MajorSection implements Serializable{
 				return null; //ouch, that hurt.
 			//This is the first time we've created this. let's create an instance now!
 			try {
+				fn.getParentFile().mkdirs();
 				fn.createNewFile();
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			return new PersonalInfo(); //empty instance
+			PersonalInfo p = new PersonalInfo(); //empty instance
+			System.out.println(p);
+			return p;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

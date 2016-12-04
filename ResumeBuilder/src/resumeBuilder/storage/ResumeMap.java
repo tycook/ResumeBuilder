@@ -51,6 +51,7 @@ public final class ResumeMap implements Serializable {
 				return null; //ouch, that hurt.
 			//This is the first time we've created this. let's create an instance now!
 			try {
+				fn.getParentFile().mkdirs();
 				fn.createNewFile();
 			} catch (IOException e1) {
 				e1.printStackTrace();
