@@ -35,6 +35,7 @@ public class PersonalInfo extends MajorSection implements Serializable{
 	@Override
 	public void addSectionToWordDocument(XWPFDocument document) {
 		//Todo: remove blanks.
+		// TODO Auto-generated method stub
 		XWPFParagraph paragraph = document.createParagraph();
 		XWPFRun run = paragraph.createRun();
 		run.setFontFamily("Times New Roman");
