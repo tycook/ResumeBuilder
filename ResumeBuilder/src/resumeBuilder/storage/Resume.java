@@ -3,13 +3,14 @@
  */
 package resumeBuilder.storage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import resumeBuilder.fileSystem.SerializableManager;
 import resumeBuilder.fileSystem.WordDocumentExporter;
 import resumeBuilder.storage.sections.Job;
 import resumeBuilder.storage.sections.MajorSection;
 import resumeBuilder.storage.sections.MajorSectionsIterator;
-import resumeBuilder.storage.sections.MajorSectionsIteratorInvalidSectionsAreSkipped;
 import resumeBuilder.storage.sections.PersonalInfo;
 import resumeBuilder.storage.sections.Reference;
 import resumeBuilder.storage.sections.Skill;
@@ -18,7 +19,14 @@ import resumeBuilder.storage.sections.Skill;
  * @author derek_2
  *Represents the general storage container for a Resume.
  */
-public class Resume {
+public class Resume  implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6097268218720330532L;
+	/**
+	 * 
+	 */
 	private final String resumeName;
 	private final PersonalInfo personalInfo;
 	private final ArrayList<Job> jobs;
@@ -54,10 +62,12 @@ public Resume(String resumeName) {
 	 * Saves the resume to disk so it can be retreived later.
 	 */
 	public void save() {
-
+		SerializableManager saver = new SerializableManager();
+		saver.initialize(resumeName);
+		saver.write(this);
 	}
 
-	public boolean export(String fileName){
+	public void export(String fileName){
 		personalInfo.save();
 		WordDocumentExporter doc = new WordDocumentExporter();
 		doc.initialize(fileName);
