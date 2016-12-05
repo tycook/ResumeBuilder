@@ -174,7 +174,7 @@ public class AddAnotherJob extends javax.swing.JFrame {
     }
 
    
-    // Variables declaration                  
+    // Variables declaration                   
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JTextField titleTextField;
