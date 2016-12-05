@@ -7,16 +7,19 @@ package resumeBuilder.GUI;
 
 import javax.swing.JOptionPane;
 
+import resumeBuilder.storage.Resume;
+
 /**
  *
  * @author tycook1
  */
 public class AddMoreSkills extends javax.swing.JFrame {
 
+	private static Resume resumeInstance;
     /**
      * Creates new form AddMoreSkills
      */
-    public AddMoreSkills() {
+    public AddMoreSkills(Resume resume) {
         initComponents();
     }
 
@@ -117,6 +120,8 @@ public class AddMoreSkills extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         JOptionPane.showMessageDialog(this,"Skills saved and added to resume");
+        resumeInstance.addSkill(sectionTitleTextField.getText(), sectionBodyTextField.getText());
+        resumeInstance.save();
         // Close Add more skills screen
         dispose();
     }                                          
@@ -151,7 +156,7 @@ public class AddMoreSkills extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMoreSkills().setVisible(true);
+                new AddMoreSkills(null).setVisible(true);
             }
         });
     }
