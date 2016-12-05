@@ -60,17 +60,19 @@ public class ResumeTest {
 	public void testSave() {
 		String title1 = "test";
 		Resume resumeInstance = new Resume("somethingelse");
-		Resume resume = new Resume("test");
-		resume.save();
+		resumeInstance.save();
 		// creatre serializible manager obj 
 		SerializableManager serializableManager = new SerializableManager();
 		// initialize with the same name as the reusme ctreated
-		serializableManager.initialize("test");
+		serializableManager.initialize("somethingelse");
 		// load and see if the resume it gibes you back has the same name
-    	resumeInstance = serializableManager.load();
-    	System.out.println("Name of resumeInstance is: " + resumeInstance.getResumeName());
-		// modify personal info of a resume personalinfo.setnameto bob 
+		Resume newResumeInstance = serializableManager.load();
+		assertEquals(newResumeInstance.getResumeName(), resumeInstance.getResumeName());
+		// modify personal info of a resume personalinfo.setnameto bob
+		newResumeInstance.getPersonalInfo().setName("bob");
 		// save reusme
+		newResumeInstance.save();
+		
 		// load another resume with the serializable manager
 		
 	}
