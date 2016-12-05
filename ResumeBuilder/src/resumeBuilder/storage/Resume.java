@@ -3,6 +3,7 @@
  */
 package resumeBuilder.storage;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public class Resume  implements Serializable {
 	 * 
 	 */
 	private String resumeName;
-	private final PersonalInfo personalInfo;
+	transient private PersonalInfo personalInfo;
 	private final ArrayList<Job> jobs;
 	private final ArrayList<Skill> skills;
 	private final ArrayList<Reference> references;
@@ -139,5 +140,10 @@ public Resume(String resumeName) {
 	 */
 	public boolean getHasChangedName() {
 		return hasChangedName;
+	}
+	private void readObject(java.io.ObjectInputStream in)
+		throws IOException, ClassNotFoundException {
+		in.defaultReadObject();
+		this.personalInfo = PersonalInfo.load();
 	}
 }

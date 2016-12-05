@@ -3,11 +3,13 @@ package resumeBuilder.storage;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import resumeBuilder.storage.sections.Job;
+import resumeBuilder.storage.sections.PersonalInfo;
 import resumeBuilder.storage.sections.Reference;
 import resumeBuilder.storage.sections.Skill;
 
@@ -30,13 +32,28 @@ public class ResumeTest {
 
 	@Test
 	public void testAddJob() {
-		fail("Not yet implemented");
+		Resume resume = new Resume("test");
+		assertTrue("The list should be empty",resume.getJobs().isEmpty());
+		resume.addJob("Blind spy", "1/9/2016", "3/4/2038", "Worked for the CIA as a blind spy");
+		assertFalse("The list should not be empty",resume.getJobs().isEmpty());
 	}
 
 	@Test
 	public void testAddSkill() {
-		fail("Not yet implemented");
+		Resume resume = new Resume("test");
+		assertTrue("The list should be empty",resume.getSkills().isEmpty());
+		resume.addSkill("smelling error detector", "I'm good at deteting spellimg errors and errors grammmar,");
+		assertFalse("The list should not be empty",resume.getSkills().isEmpty());
 	}
+	@Test
+	public void testAddReference() {
+		Resume resume = new Resume("test");
+		assertTrue("The list should be empty",resume.getReferences().isEmpty());
+		resume.addReference("Person Persons", "Person@persons.com");
+		assertFalse("The list should not be empty",resume.getReferences().isEmpty());
+		
+	}
+
 
 	@Test
 	public void testSave() {
@@ -55,7 +72,15 @@ public class ResumeTest {
 
 	@Test
 	public void testGetPersonalInfo() {
-		fail("Not yet implemented");
+		Resume resume = new Resume("test");
+		PersonalInfo inf = resume.getPersonalInfo();
+		assertNotNull("Personal Info is Null", inf);
+		inf.getOther().put("hello", "This is a random piece of personal info");
+		inf = resume.getPersonalInfo();
+		inf.save();
+		resume = new Resume("bob ate cheese");
+		PersonalInfo inf2 = resume.getPersonalInfo();
+		assertEquals("The personal info objects should have be the same name across loads", inf.getName(), inf2.getName());
 	}
 
 	@Test
