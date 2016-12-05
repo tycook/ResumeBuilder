@@ -584,6 +584,7 @@ public class ResumeWizard extends javax.swing.JFrame {
         hashMap.put("University Attended: ", universityAttendedTextField.getText());
         hashMap.put("Graduation Date: ", graduationDateTextField.getText());
         hashMap.put("Majors: ", majorTextField.getText());
+        resumeInstance.setResumeName(resumeTitleTextField.getText());
         resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
         resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
         resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());

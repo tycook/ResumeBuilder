@@ -22,6 +22,7 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
      * Creates new form AddMorePersonalInfo
      */
     public AddMorePersonalInfo(PersonalInfo personalInfo) {
+    	personalInfoInstance = personalInfo;
         initComponents();
     }
 
@@ -120,6 +121,7 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
     }                                            
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {   
+    	System.out.println("PersonalInfoInstance: " + personalInfoInstance);
     	HashMap<String, String> hashMap = personalInfoInstance.getOther();
     	hashMap.put(sectionTitleTextField.getText(), sectionBodyTextField.getText());
     	//personalInfoInstance.save();
