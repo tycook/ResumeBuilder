@@ -36,6 +36,7 @@ public class ExistingResumePicker extends javax.swing.JFrame {
         chooseResumeToEditLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         resumeList = new javax.swing.JList<>();
+chooseResumeToEditLabel.setLabelFor(resumeList);
         OKButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 

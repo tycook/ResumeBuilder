@@ -37,8 +37,10 @@ public class AddAnotherReference extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         referenceNameLabel = new javax.swing.JLabel();
         referenceNameTextField = new javax.swing.JTextField();
+        referenceNameLabel.setLabelFor(referenceNameTextField);
         contactInfoLabel = new javax.swing.JLabel();
         contactInfoTextField = new javax.swing.JTextField();
+        contactInfoLabel.setLabelFor(contactInfoTextField);
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 

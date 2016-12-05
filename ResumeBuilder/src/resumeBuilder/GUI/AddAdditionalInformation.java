@@ -32,8 +32,10 @@ public class AddAdditionalInformation extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         sectionTitleLabel = new javax.swing.JLabel();
         sectionTitleTextField = new javax.swing.JTextField();
+        sectionTitleLabel.setLabelFor(sectionTitleTextField);
         sectionBodyLabel = new javax.swing.JLabel();
         sectionBodyTextField = new javax.swing.JTextField();
+        sectionBodyLabel.setLabelFor(sectionBodyTextField);
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 

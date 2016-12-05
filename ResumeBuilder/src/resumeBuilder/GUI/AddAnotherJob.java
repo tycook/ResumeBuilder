@@ -36,15 +36,20 @@ public class AddAnotherJob extends javax.swing.JFrame {
         windowTitleLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
         titleTextField = new javax.swing.JTextField();
+        titleLabel.setLabelFor(titleTextField);
         startDateLabel = new javax.swing.JLabel();
         startDateTextField = new javax.swing.JTextField();
+        startDateLabel.setLabelFor(startDateTextField);
+        endDateLabel = new javax.swing.JLabel();
         endDateTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        endDateLabel.setLabelFor(endDateTextField);
         iStillWorkHereCheckBox = new javax.swing.JCheckBox();
         jobDescriptionLabel = new javax.swing.JLabel();
+        jobDescriptionTextField = new javax.swing.JTextField();
+        jobDescriptionLabel.setLabelFor(jobDescriptionTextField);
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        jobDescriptionTextField = new javax.swing.JTextField();
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +59,7 @@ public class AddAnotherJob extends javax.swing.JFrame {
 
         startDateLabel.setText("Start date (mm/yyyy)");
 
-        jLabel4.setText("End date (mm/yyyy)");
+        endDateLabel.setText("End date (mm/yyyy)");
 
         iStillWorkHereCheckBox.setText("I still work here");
         iStillWorkHereCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -107,7 +112,7 @@ public class AddAnotherJob extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jobDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(endDateLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(endDateTextField))))
                     .addGroup(layout.createSequentialGroup()
@@ -129,7 +134,7 @@ public class AddAnotherJob extends javax.swing.JFrame {
                     .addComponent(startDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(endDateLabel)
                     .addComponent(endDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iStillWorkHereCheckBox)
@@ -208,7 +213,7 @@ public class AddAnotherJob extends javax.swing.JFrame {
     private javax.swing.JTextField titleTextField;
     private javax.swing.JTextField endDateTextField;
     private javax.swing.JCheckBox iStillWorkHereCheckBox;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel endDateLabel;
     private javax.swing.JLabel jobDescriptionLabel;
     private javax.swing.JTextField jobDescriptionTextField;
     private javax.swing.JButton saveButton;

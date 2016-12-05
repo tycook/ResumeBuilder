@@ -36,9 +36,11 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
     private void initComponents() {
 
         sectionTitleLabel = new javax.swing.JLabel();
-        sectionBodyTextField = new javax.swing.JTextField();
-        sectionBodyLabel = new javax.swing.JLabel();
         sectionTitleTextField = new javax.swing.JTextField();
+        sectionTitleLabel.setLabelFor(sectionTitleTextField);
+        sectionBodyLabel = new javax.swing.JLabel();
+        sectionBodyTextField = new javax.swing.JTextField();
+        sectionBodyLabel.setLabelFor(sectionBodyTextField);
         titleLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
