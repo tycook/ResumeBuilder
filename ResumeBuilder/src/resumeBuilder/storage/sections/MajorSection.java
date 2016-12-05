@@ -1,10 +1,12 @@
 package resumeBuilder.storage.sections;
 
+import java.io.Serializable;
+
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-public abstract class MajorSection {
+public abstract class MajorSection implements Serializable{
 public XWPFRun createBullet(XWPFParagraph paragraph) {
 	XWPFRun run = paragraph.createRun();
 	run.setFontFamily("Wingdings");

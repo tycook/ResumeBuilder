@@ -16,7 +16,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-public class PersonalInfo extends MajorSection implements Serializable{
+public class PersonalInfo extends MajorSection{
 
 	/**
 	 * 
