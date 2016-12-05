@@ -28,12 +28,14 @@ public class ResumeWizard extends javax.swing.JFrame {
 	private Job job;
 	private Skill skill;
 	private Reference reference;
+	private static boolean creatingNewResumeInstance;
 	/**
 	 * Creates new form CreateOrEditResume
 	 */
-	public ResumeWizard(Resume resume) {
+	public ResumeWizard(Resume resume, boolean creatingNewResume) {
 		personalInfoInstance = resume.getPersonalInfo();
 		resumeInstance = resume;
+		creatingNewResumeInstance = creatingNewResume;
 		initComponents();
 	}
 
@@ -114,10 +116,20 @@ public class ResumeWizard extends javax.swing.JFrame {
 			jobDescriptionTextField.setText(job.getDescription());
 		}
 		HashMap<String, String> hashMap = personalInfoInstance.getOther();
-		universityAttendedTextField.setText(hashMap.getOrDefault("University Attended: ", ""));
-		graduationDateTextField.setText(hashMap.getOrDefault("Graduation Date: ", ""));
-		majorTextField.setText(hashMap.getOrDefault("Majors: ", ""));
-		skillList = resumeInstance.getSkills();
+		if(!creatingNewResumeInstance) // if we're editing an existing resume
+		{
+			universityAttendedTextField.setText(hashMap.getOrDefault("University Attended: ", ""));
+			graduationDateTextField.setText(hashMap.getOrDefault("Graduation Date: ", ""));
+			majorTextField.setText(hashMap.getOrDefault("Majors: ", ""));
+			skillList = resumeInstance.getSkills();
+		}
+		if(creatingNewResumeInstance)
+		{
+			universityAttendedTextField.setText("");
+			graduationDateTextField.setText("");
+			majorTextField.setText("");
+			skillList = resumeInstance.getSkills();
+		}
 		if(!skillList.isEmpty())
 		{
 			skill = skillList.get(0);
@@ -633,6 +645,23 @@ public class ResumeWizard extends javax.swing.JFrame {
 			job.setEndDate(endDateTextField.getText());
 			job.setDescription(jobDescriptionTextField.getText());
 		}
+		if(skill == null) // creation case
+		{
+			resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
+		}
+		else // edit case
+		{
+			skill.setTitle(technicalSkillsTextField.getText());
+		}
+		if(reference == null) // creation case
+		{
+			resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
+		}
+		else
+		{
+			reference.setName(referenceNameTextField.getText());
+			reference.setContactInfo(contactInfoTextField.getText());
+		}
 		JOptionPane.showMessageDialog(this,"Resume saved");
 		personalInfoInstance.setName(nameTextField.getText());
 		personalInfoInstance.setAddress(addressTextField.getText());
@@ -643,9 +672,9 @@ public class ResumeWizard extends javax.swing.JFrame {
 		hashMap.put("Graduation Date: ", graduationDateTextField.getText());
 		hashMap.put("Majors: ", majorTextField.getText());
 		resumeInstance.setResumeName(resumeTitleTextField.getText());
-		resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
+		//resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
 		//resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
-		resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
+		//resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
 		personalInfoInstance.save();
 		resumeInstance.save();
 		HomeScreen m = new HomeScreen();
@@ -746,7 +775,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new ResumeWizard(null).setVisible(true);
+				new ResumeWizard(null, creatingNewResumeInstance).setVisible(true);
 			}
 		});
 	}

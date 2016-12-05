@@ -112,7 +112,7 @@ chooseResumeToEditLabel.setLabelFor(resumeList);
         SerializableManager serializableManager = new SerializableManager();
     	serializableManager.initialize(resumeList.getSelectedValue());
     	resumeInstance = serializableManager.load();
-        ResumeWizard r = new ResumeWizard(resumeInstance);
+        ResumeWizard r = new ResumeWizard(resumeInstance, false);
         r.setVisible(true);
     }                                        
 

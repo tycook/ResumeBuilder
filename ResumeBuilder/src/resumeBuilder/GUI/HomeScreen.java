@@ -88,7 +88,7 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void createAResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	Resume defaultResume = new Resume("Resume Title");
-        ResumeWizard c = new ResumeWizard(defaultResume);
+        ResumeWizard c = new ResumeWizard(defaultResume, true);
         c.setVisible(true);
         
         dispose();
