@@ -5,12 +5,18 @@
  */
 package resumeBuilder.GUI;
 
+import resumeBuilder.storage.Resume;
+import resumeBuilder.fileSystem.SerializableManager;
+import resumeBuilder.storage.ResumeMap;
+
 /**
  *
  * @author tycook1
  */
 public class ExistingResumePicker extends javax.swing.JFrame {
 
+	private static Resume resumeInstance;
+	
     /**
      * Creates new form EditExistingResumePicker
      */
@@ -27,34 +33,35 @@ public class ExistingResumePicker extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        chooseResumeToEditLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        resumeList = new javax.swing.JList<>();
+        OKButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Choose the resume you wish to edit");
+        chooseResumeToEditLabel.setText("Choose the resume you wish to edit");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        resumeList.setModel(new javax.swing.AbstractListModel<String>() {
+            //String[] strings = ResumeMap.getResumeNames();
+        	String[] strings = {"string1", "string2"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(resumeList);
 
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        OKButton.setText("OK");
+        OKButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                OKButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -66,46 +73,49 @@ public class ExistingResumePicker extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(jLabel1))
+                        .addComponent(chooseResumeToEditLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jButton1)
+                .addComponent(OKButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(cancelButton)
                 .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(chooseResumeToEditLabel)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(OKButton)
+                    .addComponent(cancelButton))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        System.out.println("User has chosen" + jList1.getSelectedValue());
+    private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        System.out.println("User has chosen" + resumeList.getSelectedValue());
         
         // TODO now that we have the user's choice of which resume he wants to edit,
         // create a new ResumeWizard with fields already filled out
         dispose();
-        ResumeWizard r = new ResumeWizard();
+        SerializableManager serializableManager = new SerializableManager();
+    	serializableManager.initialize(resumeList.getSelectedValue());
+    	resumeInstance = serializableManager.load();
+        ResumeWizard r = new ResumeWizard(resumeInstance);
         r.setVisible(true);
     }                                        
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         dispose();
         HomeScreen h = new HomeScreen();
         h.setVisible(true);
@@ -148,10 +158,10 @@ public class ExistingResumePicker extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JButton OKButton;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel chooseResumeToEditLabel;
+    private javax.swing.JList<String> resumeList;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration                   
 }

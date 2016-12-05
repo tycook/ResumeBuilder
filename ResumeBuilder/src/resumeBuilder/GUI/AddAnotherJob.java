@@ -7,16 +7,20 @@ package resumeBuilder.GUI;
 
 import javax.swing.JOptionPane;
 
+import resumeBuilder.storage.Resume;
+
 /**
  *
  * @author tycook1
  */
 public class AddAnotherJob extends javax.swing.JFrame {
 
+	private static Resume resumeInstance;
     /**
      * Creates new form AddAnotherJob
      */
-    public AddAnotherJob() {
+    public AddAnotherJob(Resume resume) {
+    	resumeInstance = resume;
         initComponents();
     }
 
@@ -29,9 +33,9 @@ public class AddAnotherJob extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        windowTitleLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
-        companyNameLabel = new javax.swing.JLabel();
-        companyNameTextField = new javax.swing.JTextField();
+        titleTextField = new javax.swing.JTextField();
         startDateLabel = new javax.swing.JLabel();
         startDateTextField = new javax.swing.JTextField();
         endDateTextField = new javax.swing.JTextField();
@@ -44,9 +48,9 @@ public class AddAnotherJob extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titleLabel.setText("Add another job");
+        windowTitleLabel.setText("Add another job");
 
-        companyNameLabel.setText("Company name");
+        titleLabel.setText("Company name");
 
         startDateLabel.setText("Start date (mm/yyyy)");
 
@@ -78,9 +82,9 @@ public class AddAnotherJob extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(companyNameLabel)
+                        .addComponent(titleLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(companyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -108,17 +112,17 @@ public class AddAnotherJob extends javax.swing.JFrame {
                                 .addComponent(endDateTextField))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(138, 138, 138)
-                        .addComponent(titleLabel)))
+                        .addComponent(windowTitleLabel)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(titleLabel)
+                .addComponent(windowTitleLabel)
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(companyNameLabel)
-                    .addComponent(companyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleLabel)
+                    .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
@@ -155,8 +159,10 @@ public class AddAnotherJob extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                                   
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        JOptionPane.showMessageDialog(this,"Job saved and added to resume");
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {  
+    	resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
+        resumeInstance.save();
+    	JOptionPane.showMessageDialog(this,"Job saved and added to resume");
         // Close Add another job screen
         dispose();
     }                                          
@@ -191,15 +197,15 @@ public class AddAnotherJob extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddAnotherJob().setVisible(true);
+                new AddAnotherJob(null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel companyNameLabel;
-    private javax.swing.JTextField companyNameTextField;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JTextField titleTextField;
     private javax.swing.JTextField endDateTextField;
     private javax.swing.JCheckBox iStillWorkHereCheckBox;
     private javax.swing.JLabel jLabel4;
@@ -208,6 +214,6 @@ public class AddAnotherJob extends javax.swing.JFrame {
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel startDateLabel;
     private javax.swing.JTextField startDateTextField;
-    private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel windowTitleLabel;
     // End of variables declaration                   
 }

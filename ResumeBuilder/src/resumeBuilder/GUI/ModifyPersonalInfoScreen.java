@@ -7,16 +7,20 @@ package resumeBuilder.GUI;
 
 import javax.swing.JOptionPane;
 
+import resumeBuilder.storage.sections.PersonalInfo;
+
 /**
  *
  * @author tycook1
  */
 public class ModifyPersonalInfoScreen extends javax.swing.JFrame {
 
+	private static PersonalInfo personalInfoInstance;
     /**
      * Creates new form ModifyPersonalInfoScreen
      */
-    public ModifyPersonalInfoScreen() {
+    public ModifyPersonalInfoScreen(PersonalInfo personalInfo) {
+    	personalInfoInstance = personalInfo;
         initComponents();
     }
 
@@ -42,6 +46,12 @@ public class ModifyPersonalInfoScreen extends javax.swing.JFrame {
         cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        
+        nameTextField.setText(personalInfoInstance.getName());
+        addressTextField.setText(personalInfoInstance.getAddress());
+        phoneNumberTextField.setText(personalInfoInstance.getPhoneNumber());
+        emailTextField.setText(personalInfoInstance.getEmail());
+        
 
         modifyPersonalInfoLabel.setText("Modify personal info...");
 
@@ -137,6 +147,11 @@ public class ModifyPersonalInfoScreen extends javax.swing.JFrame {
     private void OKButtonActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO save the user's personal info
         JOptionPane.showMessageDialog(this,"Personal info saved. New resumes will be prepopulated with your personal info.");
+        personalInfoInstance.setName(nameTextField.getText());
+        personalInfoInstance.setAddress(addressTextField.getText());
+        personalInfoInstance.setPhoneNumber(phoneNumberTextField.getText());
+        personalInfoInstance.setEmail(emailTextField.getText());
+        personalInfoInstance.save();
         HomeScreen h = new HomeScreen();
         h.setVisible(true);
     }                                        
@@ -177,7 +192,7 @@ public class ModifyPersonalInfoScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifyPersonalInfoScreen().setVisible(true);
+                new ModifyPersonalInfoScreen(personalInfoInstance).setVisible(true);
             }
         });
     }

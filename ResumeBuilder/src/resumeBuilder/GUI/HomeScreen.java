@@ -5,7 +5,10 @@
  */
 package resumeBuilder.GUI;
 
+import resumeBuilder.storage.Resume;
+import resumeBuilder.storage.sections.PersonalInfo;
 import javax.swing.JScrollPane;
+
 
 /**
  *
@@ -83,9 +86,11 @@ public class HomeScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void createAResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        ResumeWizard c = new ResumeWizard();
+    private void createAResumeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	Resume defaultResume = new Resume("Resume Title");
+        ResumeWizard c = new ResumeWizard(defaultResume);
         c.setVisible(true);
+        
         dispose();
     }                                                   
 
@@ -94,8 +99,10 @@ public class HomeScreen extends javax.swing.JFrame {
         editExistingResumePicker.setVisible(true);
     }                                                          
 
-    private void modifyPersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                         
-        ModifyPersonalInfoScreen modifyPersonalInfoScreen = new ModifyPersonalInfoScreen();
+    private void modifyPersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	// Either will be a personalinfo object with default values or with real values
+    	PersonalInfo personalInfo = PersonalInfo.load();
+        ModifyPersonalInfoScreen modifyPersonalInfoScreen = new ModifyPersonalInfoScreen(personalInfo);
         modifyPersonalInfoScreen.setVisible(true);
     }                                                        
 

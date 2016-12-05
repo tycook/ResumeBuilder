@@ -7,16 +7,21 @@ package resumeBuilder.GUI;
 
 import javax.swing.JOptionPane;
 
+import resumeBuilder.storage.Resume;
+
 /**
  *
  * @author tycook1
  */
 public class AddAnotherReference extends javax.swing.JFrame {
 
+	private static Resume resumeInstance;
+
     /**
      * Creates new form AddAnotherReference
      */
-    public AddAnotherReference() {
+    public AddAnotherReference(Resume resume) {
+    	resumeInstance = resume;
         initComponents();
     }
 
@@ -111,6 +116,8 @@ public class AddAnotherReference extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    	resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
+    	resumeInstance.save();
         JOptionPane.showMessageDialog(this,"Reference saved and added to resume");
         // Close add reference screen
         dispose();
@@ -150,7 +157,7 @@ public class AddAnotherReference extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddAnotherReference().setVisible(true);
+                new AddAnotherReference(null).setVisible(true);
             }
         });
     }

@@ -5,7 +5,11 @@
  */
 package resumeBuilder.GUI;
 
+import java.util.HashMap;
+
 import javax.swing.JOptionPane;
+
+import resumeBuilder.storage.sections.PersonalInfo;
 
 /**
  *
@@ -13,10 +17,11 @@ import javax.swing.JOptionPane;
  */
 public class AddMorePersonalInfo extends javax.swing.JFrame {
 
+	private static PersonalInfo personalInfoInstance;
     /**
      * Creates new form AddMorePersonalInfo
      */
-    public AddMorePersonalInfo() {
+    public AddMorePersonalInfo(PersonalInfo personalInfo) {
         initComponents();
     }
 
@@ -114,7 +119,10 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
         dispose();
     }                                            
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {   
+    	HashMap<String, String> hashMap = personalInfoInstance.getOther();
+    	hashMap.put(sectionTitleTextField.getText(), sectionBodyTextField.getText());
+    	personalInfoInstance.save();
         JOptionPane.showMessageDialog(this,"Personal info saved and added to resume");
         // Close add more personal info screen
         dispose();
@@ -150,7 +158,7 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMorePersonalInfo().setVisible(true);
+                new AddMorePersonalInfo(null).setVisible(true);
             }
         });
     }

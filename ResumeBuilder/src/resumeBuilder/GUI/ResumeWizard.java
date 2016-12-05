@@ -5,7 +5,12 @@
  */
 package resumeBuilder.GUI;
 
+import java.util.HashMap;
+
 import javax.swing.JOptionPane;
+
+import resumeBuilder.storage.Resume;
+import resumeBuilder.storage.sections.PersonalInfo;
 
 /**
  *
@@ -13,10 +18,14 @@ import javax.swing.JOptionPane;
  */
 public class ResumeWizard extends javax.swing.JFrame {
 
+	private static PersonalInfo personalInfoInstance;
+	private static Resume resumeInstance;
     /**
      * Creates new form CreateOrEditResume
      */
-    public ResumeWizard() {
+    public ResumeWizard(Resume resume) {
+    	personalInfoInstance = resume.getPersonalInfo();
+    	resumeInstance = resume;
         initComponents();
     }
 
@@ -47,8 +56,8 @@ public class ResumeWizard extends javax.swing.JFrame {
         majorTextField = new javax.swing.JTextField();
         technicalSkillsCheckBox = new javax.swing.JCheckBox();
         jobCheckBox = new javax.swing.JCheckBox();
-        companyNameLabel = new javax.swing.JLabel();
-        companyNameTextField = new javax.swing.JTextField();
+        titleLabel = new javax.swing.JLabel();
+        titleTextField = new javax.swing.JTextField();
         startDateLabel = new javax.swing.JLabel();
         startDateTextField = new javax.swing.JTextField();
         endDateLabel = new javax.swing.JLabel();
@@ -73,6 +82,12 @@ public class ResumeWizard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        nameTextField.setText(personalInfoInstance.getName());
+        addressTextField.setText(personalInfoInstance.getAddress());
+        emailTextField.setText(personalInfoInstance.getEmail());
+        phoneNumberTextField.setText(personalInfoInstance.getPhoneNumber());
+        resumeTitleTextField.setText(resumeInstance.getResumeName());
+        
         resumeTitleLabel.setText("Resume Title:");
 
         resumeTitleTextField.setToolTipText("");
@@ -155,7 +170,7 @@ public class ResumeWizard extends javax.swing.JFrame {
             }
         });
 
-        companyNameLabel.setText("Company Name");
+        titleLabel.setText("Company Name");
 
         startDateLabel.setText("Start Date (mm/yyyy)");
 
@@ -309,10 +324,10 @@ public class ResumeWizard extends javax.swing.JFrame {
                                 .addComponent(contactInfoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(companyNameLabel)
+                            .addComponent(titleLabel)
                             .addComponent(addMoreSkillsButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(companyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,8 +407,8 @@ public class ResumeWizard extends javax.swing.JFrame {
                 .addComponent(jobCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(companyNameLabel)
-                    .addComponent(companyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleLabel)
+                    .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startDateLabel)
@@ -535,7 +550,7 @@ public class ResumeWizard extends javax.swing.JFrame {
     private void jobCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {                                         
         if(jobCheckBox.isSelected())
         {
-            companyNameTextField.setEnabled(true);
+            titleTextField.setEnabled(true);
             startDateTextField.setEnabled(true);
             endDateTextField.setEnabled(true);
             jobDescriptionTextField.setEnabled(true);
@@ -544,7 +559,7 @@ public class ResumeWizard extends javax.swing.JFrame {
         }
         else if(!jobCheckBox.isSelected())
         {
-            companyNameTextField.setEnabled(false);
+            titleTextField.setEnabled(false);
             startDateTextField.setEnabled(false);
             endDateTextField.setEnabled(false);
             jobDescriptionTextField.setEnabled(false);
@@ -561,7 +576,20 @@ public class ResumeWizard extends javax.swing.JFrame {
         //TODO save the resume
         
         JOptionPane.showMessageDialog(this,"Resume saved");
+        personalInfoInstance.setName(nameTextField.getText());
+        personalInfoInstance.setAddress(addressTextField.getText());
+        personalInfoInstance.setPhoneNumber(phoneNumberTextField.getText());
+        personalInfoInstance.setEmail(emailTextField.getText());
+        HashMap<String, String> hashMap = personalInfoInstance.getOther();
+        hashMap.put("University Attended: ", universityAttendedTextField.getText());
+        hashMap.put("Graduation Date: ", graduationDateTextField.getText());
+        hashMap.put("Majors: ", majorTextField.getText());
+        resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
+        resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
+        resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
         // Go back to main screen
+        personalInfoInstance.save();
+        resumeInstance.save();
         HomeScreen m = new HomeScreen();
         m.setVisible(true);
         // Close this screen
@@ -575,17 +603,17 @@ public class ResumeWizard extends javax.swing.JFrame {
     }                                            
 
     private void addMorePersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        AddMorePersonalInfo addMorePersonalInfo = new AddMorePersonalInfo();
+        AddMorePersonalInfo addMorePersonalInfo = new AddMorePersonalInfo(personalInfoInstance);
         addMorePersonalInfo.setVisible(true);
     }                                                         
 
     private void addMoreSkillsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        AddMoreSkills addMoreSkills = new AddMoreSkills();
+        AddMoreSkills addMoreSkills = new AddMoreSkills(resumeInstance);
         addMoreSkills.setVisible(true);
     }                                                   
 
     private void addAnotherJobButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-        AddAnotherJob addAnotherJob = new AddAnotherJob();
+        AddAnotherJob addAnotherJob = new AddAnotherJob(resumeInstance);
         addAnotherJob.setVisible(true);
         // TODO add your handling code here:
     }                                                   
@@ -603,7 +631,7 @@ public class ResumeWizard extends javax.swing.JFrame {
     }                                                   
 
     private void addAnotherReferenceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        AddAnotherReference addAnotherReference = new AddAnotherReference();
+        AddAnotherReference addAnotherReference = new AddAnotherReference(resumeInstance);
         addAnotherReference.setVisible(true);
     }                                                         
 
@@ -659,7 +687,7 @@ public class ResumeWizard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResumeWizard().setVisible(true);
+                new ResumeWizard(null).setVisible(true);
             }
         });
     }
@@ -673,8 +701,8 @@ public class ResumeWizard extends javax.swing.JFrame {
     private javax.swing.JCheckBox addressCheckBox;
     private javax.swing.JTextField addressTextField;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel companyNameLabel;
-    private javax.swing.JTextField companyNameTextField;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JTextField titleTextField;
     private javax.swing.JLabel contactInfoLabel;
     private javax.swing.JTextField contactInfoTextField;
     private javax.swing.JCheckBox emailCheckBox;
