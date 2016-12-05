@@ -62,6 +62,13 @@ public Resume(String resumeName) {
 	}
 
 	/**
+	 * @param skill the skill to add.
+	 */
+	public void addReference(String refName, String contactInfo) {
+		references.add(new Reference(refName, contactInfo));
+	}
+
+	/**
 	 * Saves the resume to disk so it can be retreived later.
 	 */
 	public void save() {
