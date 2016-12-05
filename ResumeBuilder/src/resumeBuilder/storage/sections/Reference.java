@@ -12,8 +12,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  *
  */
 public class Reference extends MajorSection {
-	private final String name;
-	private final String contactInfo;
+	private String name;
+	private String contactInfo;
 
 	/**
 	 * @param name
@@ -53,5 +53,19 @@ public class Reference extends MajorSection {
 		paragraph.setSpacingBefore(0);
 		paragraph.setSpacingAfter(0);
 		paragraph.setAlignment(ParagraphAlignment.LEFT);
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @param contactInfo the contactInfo to set
+	 */
+	public void setContactInfo(String contactInfo) {
+		this.contactInfo = contactInfo;
 	}
 }

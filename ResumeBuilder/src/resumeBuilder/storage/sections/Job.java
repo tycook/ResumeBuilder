@@ -14,10 +14,10 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  *
  */
 public class Job extends MajorSection {
-	private final String title;
-	private final String startDate;
-	private final String endDate;
-	private final String description;
+	private String title;
+	private String startDate;
+	private String endDate;
+	private String description;
 	/**
 	 * @param name The job name
 	 * @param startDate The start date of the job
@@ -75,6 +75,30 @@ public class Job extends MajorSection {
 		paragraph2.setSpacingBefore(0);
 		paragraph2.setSpacingAfter(0);
 		paragraph2.setAlignment(ParagraphAlignment.LEFT);
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

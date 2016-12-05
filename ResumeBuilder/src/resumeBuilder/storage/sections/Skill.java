@@ -13,8 +13,8 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  *
  */
 public class Skill extends MajorSection {
-	private final String title;
-	private final String description;
+	private String title;
+	private String description;
 	/**
 	 * @param title The Skills name, I.E. Tastey White Chocolate Chef
 	 * @param description Descriptive text about the skill, I.E. Expert at whipping up dark chocolate.
@@ -62,6 +62,18 @@ public class Skill extends MajorSection {
 		paragraph2.setSpacingBefore(0);
 		paragraph2.setSpacingAfter(0);
 		paragraph2.setAlignment(ParagraphAlignment.LEFT);
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
