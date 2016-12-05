@@ -6,11 +6,13 @@
 package resumeBuilder.GUI;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import resumeBuilder.storage.Resume;
 import resumeBuilder.storage.sections.PersonalInfo;
+import resumeBuilder.storage.sections.*;
 
 /**
  *
@@ -20,6 +22,12 @@ public class ResumeWizard extends javax.swing.JFrame {
 
 	private static PersonalInfo personalInfoInstance;
 	private static Resume resumeInstance;
+	private ArrayList<Job> jobList;
+	private ArrayList<Skill> skillList;
+	private ArrayList<Reference> referenceList;
+	private Job job;
+	private Skill skill;
+	private Reference reference;
     /**
      * Creates new form CreateOrEditResume
      */
@@ -87,6 +95,38 @@ public class ResumeWizard extends javax.swing.JFrame {
         emailTextField.setText(personalInfoInstance.getEmail());
         phoneNumberTextField.setText(personalInfoInstance.getPhoneNumber());
         resumeTitleTextField.setText(resumeInstance.getResumeName());
+        
+        // PREPOPULATE if user is editing an existing resume
+        jobList = resumeInstance.getJobs();
+        if(!jobList.isEmpty())
+        {
+        	job = jobList.get(0);
+        	titleTextField.setText(job.getTitle());
+        	startDateTextField.setText(job.getStartDate());
+        	endDateTextField.setText(job.getEndDate());
+        	jobDescriptionTextField.setText(job.getDescription());
+        }
+        HashMap<String, String> hashMap = personalInfoInstance.getOther();
+        universityAttendedTextField.setText(hashMap.getOrDefault("University Attended: ", ""));
+        graduationDateTextField.setText(hashMap.getOrDefault("Graduation Date: ", ""));
+        majorTextField.setText(hashMap.getOrDefault("Majors: ", ""));
+        skillList = resumeInstance.getSkills();
+        if(!skillList.isEmpty())
+        {
+        	skill = skillList.get(0);
+        	technicalSkillsTextField.setText(skill.getDescription());
+        }
+        referenceList = resumeInstance.getReferences();
+        if(!referenceList.isEmpty())
+        {
+        	reference = referenceList.get(0);
+        	referenceNameTextField.setText(reference.getName());
+        	contactInfoTextField.setText(reference.getContactInfo());
+        }
+        resumeTitleTextField.setText(resumeInstance.getResumeName());
+        
+        
+        
         
         resumeTitleLabel.setText("Resume Title:");
 
@@ -170,7 +210,7 @@ public class ResumeWizard extends javax.swing.JFrame {
             }
         });
 
-        titleLabel.setText("Company Name");
+        titleLabel.setText("Job Title");
 
         startDateLabel.setText("Start Date (mm/yyyy)");
 
@@ -573,8 +613,19 @@ public class ResumeWizard extends javax.swing.JFrame {
     }                                                    
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        //TODO save the resume
         
+    	if(job == null) // creation case
+    	{
+    		resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
+    		
+    	}
+    	else // edit case
+    	{
+    		job.setTitle(titleTextField.getText());
+    		job.setStartDate(startDateTextField.getText());
+    		job.setEndDate(endDateTextField.getText());
+    		job.setDescription(jobDescriptionTextField.getText());
+    	}
         JOptionPane.showMessageDialog(this,"Resume saved");
         personalInfoInstance.setName(nameTextField.getText());
         personalInfoInstance.setAddress(addressTextField.getText());
@@ -586,7 +637,7 @@ public class ResumeWizard extends javax.swing.JFrame {
         hashMap.put("Majors: ", majorTextField.getText());
         resumeInstance.setResumeName(resumeTitleTextField.getText());
         resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
-        resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
+        //resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
         resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
         personalInfoInstance.save();
         resumeInstance.save();
