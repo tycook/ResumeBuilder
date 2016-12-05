@@ -27,12 +27,14 @@ public class Resume  implements Serializable {
 	/**
 	 * 
 	 */
-	private final String resumeName;
+	private String resumeName;
 	private final PersonalInfo personalInfo;
 	private final ArrayList<Job> jobs;
 	private final ArrayList<Skill> skills;
 	private final ArrayList<Reference> references;
 	//...
+	//Internal use only:
+	private boolean hasChangedName=false; //Todo: delete orfen files if deleted.
 	/**
 	 * @param resumeName: The resume title. Is user facing, and used for the display when restoring a saved resume.
 	 */
@@ -114,5 +116,21 @@ public Resume(String resumeName) {
 	 */
 	public ArrayList<Reference> getReferences() {
 		return references;
+	}
+
+	/**
+	 * @param resumeName the resumeName to set
+	 */
+	public void setResumeName(String resumeName) {
+		this.resumeName = resumeName;
+		this.hasChangedName=true;
+		this.save();
+	}
+
+	/**
+	 * @return the hasChangedName
+	 */
+	public boolean getHasChangedName() {
+		return hasChangedName;
 	}
 }

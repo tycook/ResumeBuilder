@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import resumeBuilder.storage.sections.Job;
+import resumeBuilder.storage.sections.Reference;
+import resumeBuilder.storage.sections.Skill;
 
 public class ResumeTest {
 
@@ -22,6 +24,8 @@ public class ResumeTest {
 		assertSame("The names aren't the same", name, resume.getResumeName());
 		assertNotNull("PersonalInfo shouldn't be null", resume.getPersonalInfo());
 		assertEquals("Array list is not empty", new ArrayList<Job>(), resume.getJobs());
+		assertEquals("Array list is not empty", new ArrayList<Skill>(), resume.getSkills());
+		assertEquals("Array list is not empty", new ArrayList<Reference>(), resume.getReferences());
 	}
 
 	@Test

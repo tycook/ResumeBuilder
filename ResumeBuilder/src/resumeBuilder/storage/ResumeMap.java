@@ -98,4 +98,7 @@ public final class ResumeMap implements Serializable {
 			return false;
 		}
 	}
+	public void remove(String name){
+		map.remove(name);
+	}
 }

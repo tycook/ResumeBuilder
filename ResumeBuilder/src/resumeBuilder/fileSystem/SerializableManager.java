@@ -50,6 +50,7 @@ public class SerializableManager implements Loader {
 	}
 
 	public void write(Resume resume) {
+		//todo: delete old resume.
 		try {
 			String fn = this.getResumeFilename();
 			FileOutputStream file = new FileOutputStream(fn);
