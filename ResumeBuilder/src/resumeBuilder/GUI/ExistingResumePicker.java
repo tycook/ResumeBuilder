@@ -44,8 +44,8 @@ public class ExistingResumePicker extends javax.swing.JFrame {
         chooseResumeToEditLabel.setText("Choose the resume you wish to edit");
 
         resumeList.setModel(new javax.swing.AbstractListModel<String>() {
-            //String[] strings = ResumeMap.getResumeNames();
-        	String[] strings = {"string1", "string2"};
+            String[] strings = ResumeMap.getResumeNames();
+        	//String[] strings = {"string1", "string2"};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });

@@ -122,7 +122,8 @@ public class AddMorePersonalInfo extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {   
     	HashMap<String, String> hashMap = personalInfoInstance.getOther();
     	hashMap.put(sectionTitleTextField.getText(), sectionBodyTextField.getText());
-    	personalInfoInstance.save();
+    	//personalInfoInstance.save();
+    	System.out.println("Hash map" + hashMap);
         JOptionPane.showMessageDialog(this,"Personal info saved and added to resume");
         // Close add more personal info screen
         dispose();

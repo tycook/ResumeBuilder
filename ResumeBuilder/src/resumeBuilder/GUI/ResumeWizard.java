@@ -587,7 +587,6 @@ public class ResumeWizard extends javax.swing.JFrame {
         resumeInstance.addSkill("Technical skills: ", technicalSkillsTextField.getText());
         resumeInstance.addJob(titleTextField.getText(), startDateTextField.getText(), endDateTextField.getText(), jobDescriptionTextField.getText());
         resumeInstance.addReference(referenceNameTextField.getText(), contactInfoTextField.getText());
-        // Go back to main screen
         personalInfoInstance.save();
         resumeInstance.save();
         HomeScreen m = new HomeScreen();
@@ -622,6 +621,7 @@ public class ResumeWizard extends javax.swing.JFrame {
         if (iStillWorkHereCheckBox.isSelected())
         {
             endDateTextField.setEnabled(false);
+            
         }
         else
         {
