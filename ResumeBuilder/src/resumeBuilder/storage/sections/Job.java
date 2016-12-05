@@ -14,7 +14,7 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  *
  */
 public class Job extends MajorSection {
-	private final String name;
+	private final String title;
 	private final String startDate;
 	private final String endDate;
 	private final String description;
@@ -26,7 +26,7 @@ public class Job extends MajorSection {
 	 */
 	public Job(String name, String startDate, String endDate, String description) {
 		super();
-		this.name = name;
+		this.title = name;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.description = description;
@@ -34,8 +34,8 @@ public class Job extends MajorSection {
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 	/**
 	 * @return the startDate
@@ -61,7 +61,7 @@ public class Job extends MajorSection {
 		XWPFRun run = paragraph.createRun();
 		run.setFontFamily("Times New Roman");
 		run.setFontSize(12);
-		run.setText("Worked for " + name + "from " + startDate +  "to " + endDate);
+		run.setText("Worked for " + title + "from " + startDate +  "to " + endDate);
 		paragraph.setSpacingBefore(0);
 		paragraph.setSpacingAfter(0);
 		paragraph.setAlignment(ParagraphAlignment.LEFT);
