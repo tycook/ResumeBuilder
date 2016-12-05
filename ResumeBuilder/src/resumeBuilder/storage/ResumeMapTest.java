@@ -11,14 +11,16 @@ public class ResumeMapTest {
 	public void setUp() throws Exception {
 	}
 
-	@Test
-	public void testGetResumeNames() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testLoad() {
-		fail("Not yet implemented");
+		ResumeMap map = ResumeMap.load();
+		map.add("fish", "test");
+		map.add("dog", "test3");
+		map.save();
+		String[] them = ResumeMap.getResumeNames();
+		System.out.println(them[0]);
+		assertFalse("Error", them.length>2);
 	}
 
 	@Test
