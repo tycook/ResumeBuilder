@@ -8,6 +8,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import resumeBuilder.fileSystem.SerializableManager;
 import resumeBuilder.storage.sections.Job;
 import resumeBuilder.storage.sections.PersonalInfo;
 import resumeBuilder.storage.sections.Reference;
@@ -57,7 +58,21 @@ public class ResumeTest {
 
 	@Test
 	public void testSave() {
-		fail("Not yet implemented");
+		String title1 = "test";
+		Resume resumeInstance = new Resume("somethingelse");
+		Resume resume = new Resume("test");
+		resume.save();
+		// creatre serializible manager obj 
+		SerializableManager serializableManager = new SerializableManager();
+		// initialize with the same name as the reusme ctreated
+		serializableManager.initialize("test");
+		// load and see if the resume it gibes you back has the same name
+    	resumeInstance = serializableManager.load();
+    	System.out.println("Name of resumeInstance is: " + resumeInstance.getResumeName());
+		// modify personal info of a resume personalinfo.setnameto bob 
+		// save reusme
+		// load another resume with the serializable manager
+		
 	}
 
 	@Test
