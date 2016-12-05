@@ -20,6 +20,7 @@ public class AddMoreSkills extends javax.swing.JFrame {
      * Creates new form AddMoreSkills
      */
     public AddMoreSkills(Resume resume) {
+    	resumeInstance = resume;
         initComponents();
     }
 

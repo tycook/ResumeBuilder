@@ -739,7 +739,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 	}                                               
 
 	private void addAdditionalInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                               
-		AddAdditionalInformation addAdditionalInformation = new AddAdditionalInformation();
+		AddAdditionalInformation addAdditionalInformation = new AddAdditionalInformation(personalInfoInstance);
 		addAdditionalInformation.setVisible(true);
 		// TODO add your handling code here:
 	}                                                              
