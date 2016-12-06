@@ -18,9 +18,7 @@ import java.awt.*;
  */
 public class SaveAsExportScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ExportFilePicker
-     */
+
     public SaveAsExportScreen() {
         initComponents();
     }
