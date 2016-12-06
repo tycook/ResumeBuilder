@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import resumeBuilder.fileSystem.SerializableManager;
 import resumeBuilder.fileSystem.WordDocumentExporter;
+import resumeBuilder.storage.sections.Command;
 import resumeBuilder.storage.sections.Job;
 import resumeBuilder.storage.sections.MajorSection;
 import resumeBuilder.storage.sections.MajorSectionsIterator;
@@ -85,8 +86,11 @@ public Resume(String resumeName) {
 		doc.initialize(fileName);
 		ArrayList<MajorSection> allSections = new ArrayList<MajorSection>();
 		allSections.add(this.personalInfo);
+		allSections.add(new Command("Skills"));
 		allSections.addAll(this.skills);
+		allSections.add(new Command("Jobs"));
 		allSections.addAll(this.jobs);
+		allSections.add(new Command("References"));
 		allSections.addAll(this.references);
 		MajorSectionsIterator sections = new MajorSectionsIterator(allSections);
 		doc.write(sections);

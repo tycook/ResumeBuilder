@@ -623,7 +623,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 		
 	}                                                    
 
-	private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+	private void doSave(java.awt.event.ActionEvent evt){
 
 		if(job == null) // creation case
 		{
@@ -666,13 +666,19 @@ public class ResumeWizard extends javax.swing.JFrame {
 		resumeInstance.setResumeName(resumeTitleTextField.getText());
 		personalInfoInstance.save();
 		resumeInstance.save();
+		
+
+	}
+	private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		this.doSave(evt);
 		HomeScreen m = new HomeScreen();
 		m.setVisible(true);
 		// Close this screen
 		dispose();
 	}                                          
 
-	private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+	private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		this.doSave(evt);
 		SaveAsExportScreen exportSaveAs = new SaveAsExportScreen(resumeInstance);
 		exportSaveAs.setVisible(true);
 		dispose();
