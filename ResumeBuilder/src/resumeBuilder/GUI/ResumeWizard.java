@@ -673,23 +673,23 @@ public class ResumeWizard extends javax.swing.JFrame {
 	}                                          
 
 	private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-		ExportSaveAs exportSaveAs = new ExportSaveAs();
+		SaveAsExportScreen exportSaveAs = new SaveAsExportScreen();
 		exportSaveAs.setVisible(true);
 		dispose();
 	}                                            
 
 	private void addMorePersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-		AddMorePersonalInfo addMorePersonalInfo = new AddMorePersonalInfo(personalInfoInstance);
+		NewPersonalInfoAddScreen addMorePersonalInfo = new NewPersonalInfoAddScreen(personalInfoInstance);
 		addMorePersonalInfo.setVisible(true);
 	}                                                         
 
 	private void addMoreSkillsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-		AddMoreSkills addMoreSkills = new AddMoreSkills(resumeInstance);
+		NewSkillsAddScreen addMoreSkills = new NewSkillsAddScreen(resumeInstance);
 		addMoreSkills.setVisible(true);
 	}                                                   
 
 	private void addAnotherJobButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
-		AddAnotherJob addAnotherJob = new AddAnotherJob(resumeInstance);
+		NewJobAddScreen addAnotherJob = new NewJobAddScreen(resumeInstance);
 		addAnotherJob.setVisible(true);
 		// TODO add your handling code here:
 	}                                                   
@@ -708,7 +708,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 	}                                                   
 
 	private void addAnotherReferenceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-		AddAnotherReference addAnotherReference = new AddAnotherReference(resumeInstance);
+		NewReferenceAddScreen addAnotherReference = new NewReferenceAddScreen(resumeInstance);
 		addAnotherReference.setVisible(true);
 	}                                                         
 
@@ -728,7 +728,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 	}                                               
 
 	private void addAdditionalInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                               
-		AddAdditionalInformation addAdditionalInformation = new AddAdditionalInformation(personalInfoInstance);
+		AdditionalInfoAddScreen addAdditionalInformation = new AdditionalInfoAddScreen(personalInfoInstance);
 		addAdditionalInformation.setVisible(true);
 	}                                                              
 

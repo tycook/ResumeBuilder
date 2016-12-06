@@ -13,13 +13,13 @@ import resumeBuilder.storage.Resume;
  *
  * @author tycook1
  */
-public class AddMoreSkills extends javax.swing.JFrame {
+public class NewSkillsAddScreen extends javax.swing.JFrame {
 
 	private static Resume resumeInstance;
     /**
      * Creates new form AddMoreSkills
      */
-    public AddMoreSkills(Resume resume) {
+    public NewSkillsAddScreen(Resume resume) {
     	resumeInstance = resume;
         initComponents();
     }

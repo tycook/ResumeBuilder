@@ -94,7 +94,7 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void modifyPersonalInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	PersonalInfo personalInfo = PersonalInfo.load();
-        ModifyPersonalInfoScreen modifyPersonalInfoScreen = new ModifyPersonalInfoScreen(personalInfo);
+        PersonalInfoModifyScreen modifyPersonalInfoScreen = new PersonalInfoModifyScreen(personalInfo);
         modifyPersonalInfoScreen.setVisible(true);
     }                                                        
 

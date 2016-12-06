@@ -13,14 +13,14 @@ import resumeBuilder.storage.Resume;
  *
  * @author tycook1
  */
-public class AddAnotherReference extends javax.swing.JFrame {
+public class NewReferenceAddScreen extends javax.swing.JFrame {
 
 	private static Resume resumeInstance;
 
     /**
      * Creates new form AddAnotherReference
      */
-    public AddAnotherReference(Resume resume) {
+    public NewReferenceAddScreen(Resume resume) {
     	resumeInstance = resume;
         initComponents();
     }

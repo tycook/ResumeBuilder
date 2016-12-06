@@ -15,13 +15,13 @@ import resumeBuilder.storage.sections.PersonalInfo;
  *
  * @author tycook1
  */
-public class AddAdditionalInformation extends javax.swing.JFrame {
+public class AdditionalInfoAddScreen extends javax.swing.JFrame {
 
 	private static PersonalInfo personalInfoInstance;
     /**
      * Creates new form AddAdditionalInformation
      */
-    public AddAdditionalInformation(PersonalInfo personalInfo) {
+    public AdditionalInfoAddScreen(PersonalInfo personalInfo) {
     	personalInfoInstance = personalInfo;
         initComponents();
     }

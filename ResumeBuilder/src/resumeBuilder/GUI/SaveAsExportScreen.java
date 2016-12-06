@@ -16,12 +16,12 @@ import java.awt.*;
  *
  * @author tycook1
  */
-public class ExportSaveAs extends javax.swing.JFrame {
+public class SaveAsExportScreen extends javax.swing.JFrame {
 
     /**
      * Creates new form ExportFilePicker
      */
-    public ExportSaveAs() {
+    public SaveAsExportScreen() {
         initComponents();
     }
                          
