@@ -57,6 +57,8 @@ public class Job extends MajorSection {
 	}
 	public void addSectionToWordDocument(XWPFDocument document) {
 		
+		XWPFParagraph blankLine = document.createParagraph();
+		
 		XWPFParagraph jobparagraph = document.createParagraph();
 		XWPFRun jobrun = jobparagraph.createRun();
 		jobrun.setFontFamily("Times New Roman");
@@ -66,8 +68,6 @@ public class Job extends MajorSection {
 		jobparagraph.setSpacingBefore(0);
 		jobparagraph.setSpacingAfter(0);
 		jobparagraph.setAlignment(ParagraphAlignment.LEFT);
-		
-		XWPFParagraph blankLine = document.createParagraph();
 		
 		XWPFParagraph paragraph = document.createParagraph();
 		createBullet(paragraph);

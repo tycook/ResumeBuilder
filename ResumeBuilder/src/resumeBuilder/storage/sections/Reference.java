@@ -45,13 +45,14 @@ public class Reference extends MajorSection {
 	@Override
 	public void addSectionToWordDocument(XWPFDocument document) {
 		
+		XWPFParagraph blankline = document.createParagraph();
+		
 		XWPFParagraph refparagraph = document.createParagraph();
-		createBullet(refparagraph);
 		XWPFRun refrun = refparagraph.createRun();
 		refrun.setFontFamily("Times New Roman");
 		refrun.setBold(true);
 		refrun.setFontSize(20);
-		refrun.setText(name + "   						" + contactInfo);
+		refrun.setText("References");
 		refparagraph.setSpacingBefore(0);
 		refparagraph.setSpacingAfter(0);
 		refparagraph.setAlignment(ParagraphAlignment.LEFT);
