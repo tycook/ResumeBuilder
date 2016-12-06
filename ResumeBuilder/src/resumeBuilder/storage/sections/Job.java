@@ -56,12 +56,26 @@ public class Job extends MajorSection {
 		return description;
 	}
 	public void addSectionToWordDocument(XWPFDocument document) {
+		
+		XWPFParagraph jobparagraph = document.createParagraph();
+		XWPFRun jobrun = jobparagraph.createRun();
+		jobrun.setFontFamily("Times New Roman");
+		jobrun.setFontSize(20);
+		jobrun.setBold(true);
+		jobrun.setText("Employment");
+		jobparagraph.setSpacingBefore(0);
+		jobparagraph.setSpacingAfter(0);
+		jobparagraph.setAlignment(ParagraphAlignment.LEFT);
+		
+		XWPFParagraph blankLine = document.createParagraph();
+		
 		XWPFParagraph paragraph = document.createParagraph();
 		createBullet(paragraph);
 		XWPFRun run = paragraph.createRun();
 		run.setFontFamily("Times New Roman");
 		run.setFontSize(12);
-		run.setText("Worked for " + title + "from " + startDate +  "to " + endDate);
+		run.setBold(false);
+		run.setText("Worked for " + title + " from " + startDate +  "to " + endDate);
 		paragraph.setSpacingBefore(0);
 		paragraph.setSpacingAfter(0);
 		paragraph.setAlignment(ParagraphAlignment.LEFT);
