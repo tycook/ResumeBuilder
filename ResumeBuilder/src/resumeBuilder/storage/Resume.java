@@ -80,7 +80,7 @@ public Resume(String resumeName) {
 	}
 
 	public void export(File fileName){
-		personalInfo.save();
+		this.save();
 		WordDocumentExporter doc = new WordDocumentExporter();
 		doc.initialize(fileName);
 		ArrayList<MajorSection> allSections = new ArrayList<MajorSection>();

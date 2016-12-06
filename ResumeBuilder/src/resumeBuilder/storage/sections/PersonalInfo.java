@@ -1,6 +1,5 @@
 package resumeBuilder.storage.sections;
 
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,10 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -56,7 +55,6 @@ public class PersonalInfo extends MajorSection{
 			System.out.println(p);
 			return p;
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -79,9 +77,6 @@ public class PersonalInfo extends MajorSection{
 	 */
 	@Override
 	public void addSectionToWordDocument(XWPFDocument document) {
-		//Todo: remove blanks.
-		// TODO Auto-generated method stub
-		 
 		XWPFParagraph nameparagraph = document.createParagraph();
 		XWPFRun namerun = nameparagraph.createRun();
 		namerun.setFontFamily("Times New Roman");
@@ -94,10 +89,11 @@ public class PersonalInfo extends MajorSection{
 		nameparagraph.setAlignment(ParagraphAlignment.CENTER);
 		
 		//for entries in hashmap
-		Iterator it = other.entrySet().iterator();
+		Iterator<Entry<String, String>> it = other.entrySet().iterator();
 	    while (it.hasNext()) {
-	    	Map.Entry pair = (Map.Entry)it.next();
-	    	
+	    	Map.Entry<String, String> pair = it.next();
+	    	if(pair.getValue().equals(""))
+    			continue;
 	    	XWPFParagraph paragraph = document.createParagraph();
 			XWPFRun run = paragraph.createRun();
 			run.setFontFamily("Times New Roman");
@@ -106,9 +102,6 @@ public class PersonalInfo extends MajorSection{
 			paragraph.setSpacingBefore(0);
 			paragraph.setSpacingAfter(0);
 			paragraph.setAlignment(ParagraphAlignment.CENTER);	
-			
-			XWPFParagraph blankLine = document.createParagraph();
-	    	
 	    }
 	}
 	public String getAddress(){
