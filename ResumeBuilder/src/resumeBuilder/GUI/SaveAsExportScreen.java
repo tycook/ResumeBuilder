@@ -41,8 +41,7 @@ public class SaveAsExportScreen extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Resume saved");
         	HomeScreen h = new HomeScreen();
         	h.setVisible(true);
-        	h.requestFocus();
-        	System.out.println("User hit save. Selected file is: " + selectedFile);      
+        	h.requestFocus();     
         	resumeInstance.export(selectedFile);
         }
         if (status == JFileChooser.CANCEL_OPTION)
