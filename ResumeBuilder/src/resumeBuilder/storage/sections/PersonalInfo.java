@@ -10,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -79,15 +81,33 @@ public class PersonalInfo extends MajorSection{
 	public void addSectionToWordDocument(XWPFDocument document) {
 		//Todo: remove blanks.
 		// TODO Auto-generated method stub
-		XWPFParagraph paragraph = document.createParagraph();
-		XWPFRun run = paragraph.createRun();
-		run.setFontFamily("Times New Roman");
-		run.setFontSize(12);
-		//need to change "test" to correct text from GUI
-		run.setText("test");
-		paragraph.setSpacingBefore(0);
-		paragraph.setSpacingAfter(0);
-		paragraph.setAlignment(ParagraphAlignment.CENTER);
+		 
+		XWPFParagraph nameparagraph = document.createParagraph();
+		XWPFRun namerun = nameparagraph.createRun();
+		namerun.setFontFamily("Times New Roman");
+		namerun.setFontSize(20);
+		namerun.setBold(true);
+		this.getName();
+		namerun.setText(this.getName());
+		nameparagraph.setSpacingBefore(0);
+		nameparagraph.setSpacingAfter(0);
+		nameparagraph.setAlignment(ParagraphAlignment.CENTER);
+		
+		//for entries in hashmap
+		Iterator it = other.entrySet().iterator();
+	    while (it.hasNext()) {
+	    	Map.Entry pair = (Map.Entry)it.next();
+	    	
+	    	XWPFParagraph paragraph = document.createParagraph();
+			XWPFRun run = nameparagraph.createRun();
+			run.setFontFamily("Times New Roman");
+			run.setFontSize(12);
+			run.setText(pair.getValue().toString());
+			paragraph.setSpacingBefore(0);
+			paragraph.setSpacingAfter(0);
+			paragraph.setAlignment(ParagraphAlignment.CENTER);		
+	    	
+	    }
 	}
 	public String getAddress(){
 		return this.other.get("Address");
