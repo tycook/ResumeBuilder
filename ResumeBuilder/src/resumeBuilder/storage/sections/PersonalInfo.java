@@ -99,7 +99,7 @@ public class PersonalInfo extends MajorSection{
 	    	Map.Entry pair = (Map.Entry)it.next();
 	    	
 	    	XWPFParagraph paragraph = document.createParagraph();
-			XWPFRun run = nameparagraph.createRun();
+			XWPFRun run = paragraph.createRun();
 			run.setFontFamily("Times New Roman");
 			run.setFontSize(12);
 			run.setText(pair.getValue().toString());
