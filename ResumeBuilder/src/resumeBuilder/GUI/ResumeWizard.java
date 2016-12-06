@@ -643,7 +643,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 		}
 		else // edit case
 		{
-			skill.setTitle(technicalSkillsTextField.getText());
+			skill.setDescription(technicalSkillsTextField.getText());
 		}
 		if(reference == null) // creation case
 		{

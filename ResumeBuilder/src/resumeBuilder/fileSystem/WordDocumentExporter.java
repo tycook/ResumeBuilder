@@ -13,36 +13,44 @@ import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import resumeBuilder.storage.sections.*;
 
 //Creates and initializes a word document and file output stream.
-public class WordDocumentExporter implements Saver {
+public class WordDocumentExporter {
+	private XWPFDocument document;
+	private FileOutputStream out;
 
-	public void initialize(String resumeName){
+	public void initialize(File resumeName){
 		//Don't touch, very fragile
-		//Create Document Document
-		XWPFDocument document= new XWPFDocument(); 
+		//Create Document Document 
 		try {
-		    //Write the Document in file system
-			FileOutputStream out = new FileOutputStream(
-				new File(resumeName + ".docx")); 
-				document.close();
-				out.close();		
+			//Write the Document in file system
+			out = new FileOutputStream(resumeName); 
 		} 
 		catch (IOException e) {
 			e.printStackTrace(); }
 
 	}
 
-	@Override
 	public void write(Iterator<MajorSection> sections) {
 		//MajorSectionsIterator i = Iterator (sections);\
 
 		while(sections.hasNext() == true) {
 			MajorSection itr = sections.next();
-			itr.addSectionToWordDocument(document);			
-			}
-		
+			itr.addSectionToWordDocument(document);
 		}
-			
+
+		try{
+			document.write(out);
+			document.close();
+			out.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
 	}
+	public WordDocumentExporter(){
+		document = new XWPFDocument();
+	}
+	
+}
 
 
 

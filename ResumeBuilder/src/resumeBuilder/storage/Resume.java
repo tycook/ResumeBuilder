@@ -3,6 +3,7 @@
  */
 package resumeBuilder.storage;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public Resume(String resumeName) {
 		saver.write(this);
 	}
 
-	public void export(String fileName){
+	public void export(File fileName){
 		personalInfo.save();
 		WordDocumentExporter doc = new WordDocumentExporter();
 		doc.initialize(fileName);
