@@ -57,18 +57,6 @@ public class Job extends MajorSection {
 	}
 	public void addSectionToWordDocument(XWPFDocument document) {
 		
-		XWPFParagraph blankLine = document.createParagraph();
-		
-		XWPFParagraph jobparagraph = document.createParagraph();
-		XWPFRun jobrun = jobparagraph.createRun();
-		jobrun.setFontFamily("Times New Roman");
-		jobrun.setFontSize(20);
-		jobrun.setBold(true);
-		jobrun.setText("Employment");
-		jobparagraph.setSpacingBefore(0);
-		jobparagraph.setSpacingAfter(0);
-		jobparagraph.setAlignment(ParagraphAlignment.LEFT);
-		
 		XWPFParagraph paragraph = document.createParagraph();
 		createBullet(paragraph);
 		XWPFRun run = paragraph.createRun();
