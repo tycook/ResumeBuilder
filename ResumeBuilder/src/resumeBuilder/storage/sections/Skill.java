@@ -43,8 +43,9 @@ public class Skill extends MajorSection {
 	@Override
 	public void addSectionToWordDocument(XWPFDocument document) {
 		// TODO Auto-generated method stub
+		XWPFParagraph blankLine = document.createParagraph();
+
 		XWPFParagraph skillparagraph = document.createParagraph();
-		createBullet(skillparagraph);
 		XWPFRun skillrun = skillparagraph.createRun();
 		skillrun.setFontFamily("Times New Roman");
 		skillrun.setBold(true);
@@ -53,8 +54,6 @@ public class Skill extends MajorSection {
 		skillparagraph.setSpacingBefore(0);
 		skillparagraph.setSpacingAfter(0);
 		skillparagraph.setAlignment(ParagraphAlignment.LEFT);
-		
-		XWPFParagraph blankLine = document.createParagraph();
 		
 		XWPFParagraph paragraph = document.createParagraph();
 		XWPFRun run = paragraph.createRun();
