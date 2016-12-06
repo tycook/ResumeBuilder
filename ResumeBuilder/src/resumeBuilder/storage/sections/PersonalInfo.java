@@ -105,7 +105,9 @@ public class PersonalInfo extends MajorSection{
 			run.setText(pair.getValue().toString());
 			paragraph.setSpacingBefore(0);
 			paragraph.setSpacingAfter(0);
-			paragraph.setAlignment(ParagraphAlignment.CENTER);		
+			paragraph.setAlignment(ParagraphAlignment.CENTER);	
+			
+			XWPFParagraph blankLine = document.createParagraph();
 	    	
 	    }
 	}
