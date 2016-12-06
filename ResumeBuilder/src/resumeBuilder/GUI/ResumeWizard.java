@@ -673,7 +673,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 	}                                          
 
 	private void exportButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-		SaveAsExportScreen exportSaveAs = new SaveAsExportScreen();
+		SaveAsExportScreen exportSaveAs = new SaveAsExportScreen(resumeInstance);
 		exportSaveAs.setVisible(true);
 		dispose();
 	}                                            

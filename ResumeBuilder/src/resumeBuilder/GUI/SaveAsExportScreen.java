@@ -6,9 +6,12 @@
 package resumeBuilder.GUI;
 
 import java.io.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import resumeBuilder.storage.Resume;
 
 import java.awt.*;
 
@@ -19,7 +22,9 @@ import java.awt.*;
 public class SaveAsExportScreen extends javax.swing.JFrame {
 
 
-    public SaveAsExportScreen() {
+	private static Resume resumeInstance;
+    public SaveAsExportScreen(Resume resume) {
+    	resumeInstance = resume;
         initComponents();
     }
                          
@@ -37,7 +42,8 @@ public class SaveAsExportScreen extends javax.swing.JFrame {
         	HomeScreen h = new HomeScreen();
         	h.setVisible(true);
         	h.requestFocus();
-        	System.out.println("User hit save. Selected file is: " + selectedFile);      	
+        	System.out.println("User hit save. Selected file is: " + selectedFile);      
+        	resumeInstance.export(selectedFile);
         }
         if (status == JFileChooser.CANCEL_OPTION)
         {
