@@ -6,6 +6,7 @@
 package resumeBuilder.GUI;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.swing.JOptionPane;
 
@@ -116,7 +117,7 @@ public class NewPersonalInfoAddScreen extends javax.swing.JFrame {
     }                                            
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-    	HashMap<String, String> hashMap = personalInfoInstance.getOther();
+    	LinkedHashMap<String, String> hashMap = personalInfoInstance.getOther();
     	hashMap.put(sectionTitleTextField.getText(), sectionBodyTextField.getText());
         JOptionPane.showMessageDialog(this,"Personal info saved and added to resume");
         // Close add more personal info screen

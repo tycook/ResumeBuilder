@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * ResumeMap holds key/value pairs of resume name -> appropriate file name.
@@ -24,7 +25,7 @@ public final class ResumeMap implements Serializable {
 	 */
 	private static final long serialVersionUID = 4817039169745314736L;
 	transient private static final ResumeMap instance = ResumeMap.load();
-	private final HashMap<String, String> map;
+	private final LinkedHashMap<String, String> map;
 
 	private static File getSavePath(){
 		return new File(System.getProperty("user.home")+File.separator+".resumeBuilder"+File.separator+"resumeMap.ser");
@@ -73,7 +74,7 @@ public final class ResumeMap implements Serializable {
 
 	private ResumeMap() {
 		super();
-		this.map = new HashMap<String, String>();
+		this.map = new LinkedHashMap<String, String>();
 	}
 
 	public void add(String key, String value){

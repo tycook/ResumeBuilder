@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -25,7 +26,7 @@ public class PersonalInfo extends MajorSection{
 	private static final long serialVersionUID = -6030072760275239677L;
 	transient private static final PersonalInfo instance=null;
 	private String name;
-	private HashMap<String, String> other;
+	private LinkedHashMap<String, String> other;
 
 	private static File getSavePath(){
 		return new File(System.getProperty("user.home")+File.separator+".resumeBuilder"+File.separator+"personalInfo.ser");
@@ -66,7 +67,7 @@ public class PersonalInfo extends MajorSection{
 	private PersonalInfo() {
 		super();
 		this.name="Default Name";
-		this.other = new HashMap<String, String>();
+		this.other = new LinkedHashMap<String, String>();
 		this.other.put("Email", "");
 		this.other.put("phone Number", "");
 		this.other.put("Address", "");
@@ -119,7 +120,7 @@ public class PersonalInfo extends MajorSection{
 	/**
 	 * @return the other attributes
 	 */
-	public HashMap<String, String> getOther() {
+	public LinkedHashMap<String, String> getOther() {
 		return other;
 	}
 	public String getPhoneNumber(){

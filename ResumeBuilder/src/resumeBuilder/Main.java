@@ -7,7 +7,6 @@ public class Main {
 	public static void main(String[] args) {
 		HomeScreen mainGUI = new HomeScreen();
 		mainGUI.setVisible(true);
-
 	}
 
 }

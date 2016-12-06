@@ -6,6 +6,7 @@
 package resumeBuilder.GUI;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.swing.JOptionPane;
 
@@ -112,7 +113,7 @@ public class AdditionalInfoAddScreen extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         JOptionPane.showMessageDialog(this,"Additional information saved and added to resume");
-        HashMap<String, String> hashMap = personalInfoInstance.getOther();
+        LinkedHashMap<String, String> hashMap = personalInfoInstance.getOther();
 		hashMap.put(sectionTitleTextField.getText(), sectionBodyTextField.getText());
         // Close add additional information screen
         dispose();

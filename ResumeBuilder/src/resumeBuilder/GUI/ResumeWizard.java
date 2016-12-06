@@ -6,6 +6,7 @@
 package resumeBuilder.GUI;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -108,7 +109,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 			endDateTextField.setText(job.getEndDate());
 			jobDescriptionTextField.setText(job.getDescription());
 		}
-		HashMap<String, String> hashMap = personalInfoInstance.getOther();
+		LinkedHashMap<String, String> hashMap = personalInfoInstance.getOther();
 		if(!creatingNewResumeInstance) // if we're editing an existing resume
 		{
 			universityAttendedTextField.setText(hashMap.getOrDefault("University Attended: ", ""));
@@ -659,7 +660,7 @@ public class ResumeWizard extends javax.swing.JFrame {
 		personalInfoInstance.setAddress(addressTextField.getText());
 		personalInfoInstance.setPhoneNumber(phoneNumberTextField.getText());
 		personalInfoInstance.setEmail(emailTextField.getText());
-		HashMap<String, String> hashMap = personalInfoInstance.getOther();
+		LinkedHashMap<String, String> hashMap = personalInfoInstance.getOther();
 		hashMap.put("University Attended: ", universityAttendedTextField.getText());
 		hashMap.put("Graduation Date: ", graduationDateTextField.getText());
 		hashMap.put("Majors: ", majorTextField.getText());
